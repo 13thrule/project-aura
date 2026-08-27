@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use or reference this project, please cite it as below."
+title: "Project Aura: An Open-Source Ambulatory EEG Platform for Pre-Ictal Signature Research"
+type: software
+authors:
+  - alias: "13thrule"
+repository-code: "https://github.com/13thrule/project-aura"
+license: AGPL-3.0-only
+date-released: 2026-08-27
+keywords:
+  - eeg
+  - epilepsy
+  - seizure-detection
+  - ambulatory-monitoring
+  - openbci
+  - biosignals

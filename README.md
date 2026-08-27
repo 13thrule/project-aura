@@ -1,5 +1,7 @@
 # Project Aura
 
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+
 An open-source, non-clinical research platform for capturing continuous,
 ambulatory EEG data in a home environment, to help identify pre-ictal
 (pre-seizure) signatures — and to make automated seizure detection
@@ -198,6 +200,14 @@ FDA/MHRA-approved medical device and must never be used for real-time
 clinical decisions, automated medication dispensing, or emergency
 dispatch. See `docs/DESIGN_DOCUMENT.md` section 5 for the full ethics
 and limitations statement.
+
+## License
+
+[GNU AGPLv3](LICENSE) — chosen specifically because Aura includes a
+network-facing dashboard/broker: if someone runs a modified version of
+this system as a service, AGPL requires them to make their source
+available too, closing the loophole plain GPL leaves open for
+network-deployed software.
 
 ## Research credit & acknowledgments
 

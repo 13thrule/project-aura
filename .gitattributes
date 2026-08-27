@@ -1,0 +1,9 @@
+# Normalize line endings to LF in the repo regardless of the checkout
+# platform's autocrlf setting — avoids the "LF will be replaced by CRLF"
+# noise on Windows and keeps diffs clean across contributors' OSes.
+* text=auto eol=lf
+
+*.gif binary
+*.png binary
+*.jpg binary
+*.jpeg binary
