@@ -10,9 +10,11 @@ implementation would spread gradient across every control point equally
 regardless of input.
 """
 
-import torch
+import pytest
 
-from aura_pipeline.kan_detector import AuraPreIctalKAN, KANLinearLayer
+torch = pytest.importorskip("torch")  # optional 'kan' extra (design doc section 4.4) — not installed by default, see pyproject.toml
+
+from aura_pipeline.kan_detector import AuraPreIctalKAN, KANLinearLayer  # noqa: E402
 
 
 def test_output_shape():

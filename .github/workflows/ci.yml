@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  broker:
+    name: broker (cargo test + clippy)
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: broker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: broker
+      - run: cargo test --all-targets
+      - run: cargo clippy --all-targets -- -D warnings
+
+  pipeline:
+    name: pipeline (pytest)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e .
+      # No CHB-MIT data in CI (42GB dataset, not checked in — see
+      # data/README.md). Tests that need it are explicitly
+      # pytest.mark.skipif-guarded on the real download existing, so
+      # they skip cleanly here rather than failing on missing data —
+      # this verifies the code that CAN run everywhere still does, not
+      # a fake pass.
+      - run: pytest -v
