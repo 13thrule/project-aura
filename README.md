@@ -239,10 +239,17 @@ not just cited for background, but actually integrated into the code
   Python." *JMLR*, 12, 2825-2830. — the classifier trained and served
   live in the dashboard.
 
-**Hardware references**
-- OpenBCI Cyton board documentation — openbci.com.
-- BrainFlow — brainflow.org — the acquisition library `broker/` targets
-  for live Cyton ingestion.
+**Hardware** (no affiliation with or endorsement by either company —
+credited here because this design targets their real, publicly
+documented hardware)
+- [OpenBCI](https://github.com/OpenBCI) — makers of the Cyton
+  acquisition board this design is built around; see
+  [openbci.com](https://openbci.com) for board documentation.
+- [Texas Instruments](https://github.com/TexasInstruments) — the
+  [ADS1299](https://www.ti.com/product/ADS1299) is the 8-channel
+  EEG-grade analog front-end chip inside the Cyton board.
+- BrainFlow ([brainflow.org](https://brainflow.org)) — the acquisition
+  library `broker/` targets for live Cyton ingestion.
 - Raspberry Pi Pico datasheet — the Aura Trigger microcontroller.
 
 ## Start here
