@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -e .
+      - run: pip install -e . pytest
       # No CHB-MIT data in CI (42GB dataset, not checked in — see
       # data/README.md). Tests that need it are explicitly
       # pytest.mark.skipif-guarded on the real download existing, so
