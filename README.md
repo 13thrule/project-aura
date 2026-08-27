@@ -1,6 +1,10 @@
 # Project Aura
 
+[![CI](https://github.com/13thrule/project-aura/actions/workflows/ci.yml/badge.svg)](https://github.com/13thrule/project-aura/actions/workflows/ci.yml)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/rust-stable-orange.svg)](broker/)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pipeline/pyproject.toml)
+[![Last commit](https://img.shields.io/github/last-commit/13thrule/project-aura)](https://github.com/13thrule/project-aura/commits/master)
 
 An open-source, non-clinical research platform for capturing continuous,
 ambulatory EEG data in a home environment, to help identify pre-ictal
@@ -159,6 +163,20 @@ cd pipeline
 .venv\Scripts\python.exe validation\validate_chbmit_multifeature.py chb01
 .venv\Scripts\python.exe validation\validate_chbmit_szcore.py chb01   # cross-checked against SzCORE's real scorer
 ```
+
+## Continuous integration
+
+The CI badge above reflects real test runs, not just a status check
+that exists for show: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+runs the broker's actual `cargo test`/`cargo clippy` and the pipeline's
+actual `pytest` suite on every push. Honest scope note: CHB-MIT (a
+public dataset, but ~42GB and not checked into this repo — see
+[`data/README.md`](data/README.md)) isn't downloaded in CI, so the small
+number of tests that need real downloaded recordings skip cleanly there
+rather than failing on missing data; everything that can run without it
+(feature extraction, filters, chain verification, EDF export, SzCORE
+scoring, the calibration extension, and more) genuinely runs and is
+genuinely checked on every commit.
 
 ## Repository structure
 
