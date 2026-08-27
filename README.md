@@ -199,6 +199,52 @@ clinical decisions, automated medication dispensing, or emergency
 dispatch. See `docs/DESIGN_DOCUMENT.md` section 5 for the full ethics
 and limitations statement.
 
+## Research credit & acknowledgments
+
+Aura is built on top of, and validated against, real public research —
+not just cited for background, but actually integrated into the code
+(see links above to where each is used). Full list with context:
+[`docs/DESIGN_DOCUMENT.md`](docs/DESIGN_DOCUMENT.md) section 10.
+
+**Dataset**
+- Shoeb, A. (2009). *Application of Machine Learning to Epileptic
+  Seizure Onset Detection and Treatment.* PhD thesis, MIT. — source of
+  the CHB-MIT Scalp EEG Database.
+- Goldberger, A. L., et al. (2000). "PhysioBank, PhysioToolkit, and
+  PhysioNet." *Circulation*, 101(23), e215-e220. — PhysioNet, which
+  hosts CHB-MIT.
+
+**Benchmarking standard — actually integrated, not just cited**
+- Dan, J., et al. (2024). "SzCORE: A Seizure Community Open-Source
+  Research Evaluation framework for the validation of EEG-based
+  automated seizure detection algorithms." *Epilepsia.* —
+  [esl-epfl/timescoring](https://github.com/esl-epfl/timescoring) (real
+  scoring, wrapped in `pipeline/aura_pipeline/timescore.py`) and
+  [esl-epfl/epilepsy2bids](https://github.com/esl-epfl/epilepsy2bids)
+  (real BIDS-style export, used by `pipeline/tools/export_chbmit_bids.py`)
+  are both this group's own tooling.
+- Pernet, C. R., et al. (2019). "EEG-BIDS, an extension to the brain
+  imaging data structure for electroencephalography." *Scientific
+  Data*, 6:103.
+
+**Methods**
+- Gramfort, A., et al. (2013). "MEG and EEG data analysis with
+  MNE-Python." *Frontiers in Neuroscience*, 7:267. — the toolkit
+  underpinning `pipeline/`.
+- Hjorth, B. (1970). "EEG analysis based on time domain properties."
+  *Electroencephalography and Clinical Neurophysiology*, 29(3), 306-310.
+- Esteller, R., et al. (2001). "Line length: an efficient feature for
+  seizure onset detection." *Proc. 23rd Annual Int. Conf. IEEE EMBS.*
+- Pedregosa, F., et al. (2011). "Scikit-learn: Machine Learning in
+  Python." *JMLR*, 12, 2825-2830. — the classifier trained and served
+  live in the dashboard.
+
+**Hardware references**
+- OpenBCI Cyton board documentation — openbci.com.
+- BrainFlow — brainflow.org — the acquisition library `broker/` targets
+  for live Cyton ingestion.
+- Raspberry Pi Pico datasheet — the Aura Trigger microcontroller.
+
 ## Start here
 
 - [`docs/DESIGN_DOCUMENT.md`](docs/DESIGN_DOCUMENT.md) — full spec:
