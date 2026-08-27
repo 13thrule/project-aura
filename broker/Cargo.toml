@@ -1,0 +1,62 @@
+[package]
+name = "aura-broker"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Async runtime — the whole "no dropped frames" requirement (design doc
+# section 3.1 / risk 2) rests on tokio's task scheduling being predictable
+# under sustained load. Soak-test before trusting it.
+tokio = { version = "1", features = ["full"] }
+
+# The Aura Trigger (Pico) still talks plain USB serial (CDC) directly to
+# the broker — BrainFlow doesn't know about our custom device, so this
+# stays even though Cyton ingestion below doesn't use it.
+#
+# Uses the plain BLOCKING `serialport` crate on a dedicated thread
+# (std::thread + a std::sync::mpsc bridge into the broadcast channel),
+# NOT `tokio-serial`'s async API — confirmed on real hardware that
+# tokio-serial's async reads never complete on Windows (the port opens
+# without error, but next_line().await hangs forever, zero bytes ever
+# observed). This is a real, documented tokio-serial/tokio limitation,
+# not a config mistake: modern Tokio (1.0+) removed the Windows-
+# compatible async polling primitive (PollEvented) that tokio-serial
+# relied on, and there is currently no Windows equivalent of the
+# Unix-only AsyncFd that replaced it — see berkowski/tokio-serial issues
+# #29 and #37, and tokio-rs/tokio issue #3396. Blocking I/O on its own
+# thread sidesteps this entirely and is the standard workaround.
+serialport = "4"
+
+# Pico emits JSON lines (see hardware/pico_clicker/README.md protocol).
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Cyton ingestion: per CLAUDE.md, use BrainFlow's Rust bindings rather
+# than hand-rolling a Cyton serial parser. There is NO crate literally
+# named `brainflow` on crates.io — confirmed via the crates.io API
+# (crates.io/api/v1/crates/brainflow -> 404). Do not add a `brainflow =
+# "<version>"` line here no matter how plausible a version number looks;
+# it will fail to resolve. The real binding requires building the
+# BrainFlow C/C++ core locally first, then `cd rust_package/brainflow &&
+# cargo build --features generate_binding` against it (see
+# https://brainflow.readthedocs.io/en/stable/BuildBrainFlow.html#rust and
+# broker/README.md). Left commented until that local build is done and
+# the resulting crate is path/git-dependency'd in.
+# brainflow = { path = "../vendor/brainflow/rust_package/brainflow" }
+
+# Local pub/sub fan-out to the dashboard: broadcast channel is the
+# simplest zero-copy-ish primitive that ships in tokio itself. Revisit if
+# profiling shows it's not actually zero-copy enough under load.
+# (tokio::sync::broadcast is included in the "full" feature above.)
+
+# Dashboard transport.
+tokio-tungstenite = "0.24"
+futures-util = "0.3"
+anyhow = "1"
+
+# storage.rs's hash-chain (same principle as
+# hardware/pico_clicker/provenance_main.py — see design doc section 2.5)
+# over written CSV rows.
+sha2 = "0.10"
+
+[dev-dependencies]

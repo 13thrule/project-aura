@@ -1,0 +1,30 @@
+Loading and extracting features for subjects: ['chb01', 'chb02'] ...
+{
+  "method": "Population LogisticRegression trained on all-but-one subject, threshold calibrated per-patient using ONLY their own baseline data (no seizure labels from them), tested on their real seizures \u2014 leave-one-subject-out.",
+  "target_fp_per_hour": 2.0,
+  "min_consecutive_windows": 2,
+  "folds": [
+    {
+      "held_out_subject": "chb01",
+      "trained_on": [
+        "chb02"
+      ],
+      "calibrated_threshold": 0.9477092183445404,
+      "seizures_total": 7,
+      "seizures_detected": 3,
+      "sensitivity": 0.42857142857142855,
+      "false_positives_per_hour": 0.0
+    },
+    {
+      "held_out_subject": "chb02",
+      "trained_on": [
+        "chb01"
+      ],
+      "calibrated_threshold": 1.0,
+      "seizures_total": 3,
+      "seizures_detected": 1,
+      "sensitivity": 0.3333333333333333,
+      "false_positives_per_hour": 66.4461923489453
+    }
+  ]
+}

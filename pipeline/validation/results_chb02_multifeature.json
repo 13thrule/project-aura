@@ -1,0 +1,188 @@
+[chb02] Extracting features for all files (line length, Hjorth, band power per window)...
+{
+  "subject": "chb02",
+  "n_subjects": 1,
+  "method": "LogisticRegression, 8 features (line_length, hjorth mobility/complexity, 5 band powers), leave-one-seizure-out CV",
+  "channels_used": [
+    "FP1-F7",
+    "F7-T7",
+    "T7-P7",
+    "P7-O1",
+    "FP2-F8",
+    "F8-T8",
+    "T8-P8-0",
+    "P8-O2"
+  ],
+  "window_seconds": 2.0,
+  "seizures_total": 3,
+  "test_non_seizure_hours_evaluated": 2.2155555555555555,
+  "operating_points": [
+    {
+      "probability_threshold": 0.5,
+      "min_consecutive_windows": 1,
+      "sensitivity": 1.0,
+      "seizures_detected": 3,
+      "false_positives_per_hour": 99.29789368104313
+    },
+    {
+      "probability_threshold": 0.5,
+      "min_consecutive_windows": 2,
+      "sensitivity": 1.0,
+      "seizures_detected": 3,
+      "false_positives_per_hour": 39.71915747241725
+    },
+    {
+      "probability_threshold": 0.5,
+      "min_consecutive_windows": 3,
+      "sensitivity": 1.0,
+      "seizures_detected": 3,
+      "false_positives_per_hour": 27.08124373119358
+    },
+    {
+      "probability_threshold": 0.9,
+      "min_consecutive_windows": 1,
+      "sensitivity": 1.0,
+      "seizures_detected": 3,
+      "false_positives_per_hour": 39.26780341023069
+    },
+    {
+      "probability_threshold": 0.9,
+      "min_consecutive_windows": 2,
+      "sensitivity": 1.0,
+      "seizures_detected": 3,
+      "false_positives_per_hour": 25.275827482447344
+    },
+    {
+      "probability_threshold": 0.9,
+      "min_consecutive_windows": 3,
+      "sensitivity": 0.6666666666666666,
+      "seizures_detected": 2,
+      "false_positives_per_hour": 19.859578736208626
+    },
+    {
+      "probability_threshold": 0.99,
+      "min_consecutive_windows": 1,
+      "sensitivity": 0.6666666666666666,
+      "seizures_detected": 2,
+      "false_positives_per_hour": 31.59478435305918
+    },
+    {
+      "probability_threshold": 0.99,
+      "min_consecutive_windows": 2,
+      "sensitivity": 0.6666666666666666,
+      "seizures_detected": 2,
+      "false_positives_per_hour": 22.567703109327983
+    },
+    {
+      "probability_threshold": 0.99,
+      "min_consecutive_windows": 3,
+      "sensitivity": 0.6666666666666666,
+      "seizures_detected": 2,
+      "false_positives_per_hour": 18.50551654964895
+    },
+    {
+      "probability_threshold": 0.999,
+      "min_consecutive_windows": 1,
+      "sensitivity": 0.6666666666666666,
+      "seizures_detected": 2,
+      "false_positives_per_hour": 27.53259779338014
+    },
+    {
+      "probability_threshold": 0.999,
+      "min_consecutive_windows": 2,
+      "sensitivity": 0.3333333333333333,
+      "seizures_detected": 1,
+      "false_positives_per_hour": 21.664994984954866
+    },
+    {
+      "probability_threshold": 0.999,
+      "min_consecutive_windows": 3,
+      "sensitivity": 0.3333333333333333,
+      "seizures_detected": 1,
+      "false_positives_per_hour": 18.50551654964895
+    }
+  ],
+  "per_fold": [
+    {
+      "held_out_file": "chb02_16.edf",
+      "detected_t0.5_smooth1": true,
+      "fp_windows_t0.5_smooth1": 21,
+      "detected_t0.5_smooth2": true,
+      "fp_windows_t0.5_smooth2": 4,
+      "detected_t0.5_smooth3": true,
+      "fp_windows_t0.5_smooth3": 0,
+      "detected_t0.9_smooth1": true,
+      "fp_windows_t0.9_smooth1": 7,
+      "detected_t0.9_smooth2": true,
+      "fp_windows_t0.9_smooth2": 2,
+      "detected_t0.9_smooth3": true,
+      "fp_windows_t0.9_smooth3": 0,
+      "detected_t0.99_smooth1": true,
+      "fp_windows_t0.99_smooth1": 4,
+      "detected_t0.99_smooth2": true,
+      "fp_windows_t0.99_smooth2": 2,
+      "detected_t0.99_smooth3": true,
+      "fp_windows_t0.99_smooth3": 0,
+      "detected_t0.999_smooth1": true,
+      "fp_windows_t0.999_smooth1": 0,
+      "detected_t0.999_smooth2": false,
+      "fp_windows_t0.999_smooth2": 0,
+      "detected_t0.999_smooth3": false,
+      "fp_windows_t0.999_smooth3": 0
+    },
+    {
+      "held_out_file": "chb02_16+.edf",
+      "detected_t0.5_smooth1": true,
+      "fp_windows_t0.5_smooth1": 75,
+      "detected_t0.5_smooth2": true,
+      "fp_windows_t0.5_smooth2": 54,
+      "detected_t0.5_smooth3": true,
+      "fp_windows_t0.5_smooth3": 47,
+      "detected_t0.9_smooth1": true,
+      "fp_windows_t0.9_smooth1": 60,
+      "detected_t0.9_smooth2": true,
+      "fp_windows_t0.9_smooth2": 48,
+      "detected_t0.9_smooth3": true,
+      "fp_windows_t0.9_smooth3": 42,
+      "detected_t0.99_smooth1": true,
+      "fp_windows_t0.99_smooth1": 57,
+      "detected_t0.99_smooth2": true,
+      "fp_windows_t0.99_smooth2": 47,
+      "detected_t0.99_smooth3": true,
+      "fp_windows_t0.99_smooth3": 41,
+      "detected_t0.999_smooth1": true,
+      "fp_windows_t0.999_smooth1": 56,
+      "detected_t0.999_smooth2": true,
+      "fp_windows_t0.999_smooth2": 47,
+      "detected_t0.999_smooth3": true,
+      "fp_windows_t0.999_smooth3": 41
+    },
+    {
+      "held_out_file": "chb02_19.edf",
+      "detected_t0.5_smooth1": true,
+      "fp_windows_t0.5_smooth1": 124,
+      "detected_t0.5_smooth2": true,
+      "fp_windows_t0.5_smooth2": 30,
+      "detected_t0.5_smooth3": true,
+      "fp_windows_t0.5_smooth3": 13,
+      "detected_t0.9_smooth1": true,
+      "fp_windows_t0.9_smooth1": 20,
+      "detected_t0.9_smooth2": true,
+      "fp_windows_t0.9_smooth2": 6,
+      "detected_t0.9_smooth3": false,
+      "fp_windows_t0.9_smooth3": 2,
+      "detected_t0.99_smooth1": false,
+      "fp_windows_t0.99_smooth1": 9,
+      "detected_t0.99_smooth2": false,
+      "fp_windows_t0.99_smooth2": 1,
+      "detected_t0.99_smooth3": false,
+      "fp_windows_t0.99_smooth3": 0,
+      "detected_t0.999_smooth1": false,
+      "fp_windows_t0.999_smooth1": 5,
+      "detected_t0.999_smooth2": false,
+      "fp_windows_t0.999_smooth2": 1,
+      "detected_t0.999_smooth3": false,
+      "fp_windows_t0.999_smooth3": 0
+    }
+  ]
+}

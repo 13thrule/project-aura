@@ -1,0 +1,22 @@
+{
+  "subject": "chb01",
+  "n_subjects": 1,
+  "channels_used": [
+    "FP1-F7",
+    "F7-T7",
+    "T7-P7",
+    "P7-O1",
+    "FP2-F8",
+    "F8-T8",
+    "T8-P8-0",
+    "P8-O2"
+  ],
+  "window_seconds": 2.0,
+  "mains_hz": 60.0,
+  "threshold_line_length": 11599.546140537675,
+  "seizures_total": 7,
+  "seizures_detected_event_level": 2,
+  "sensitivity": 0.2857142857142857,
+  "false_positives_per_hour": 4.469332769824079,
+  "total_non_seizure_hours_evaluated": 10.516111111111112
+}

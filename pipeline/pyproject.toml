@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aura-pipeline"
+version = "0.1.0"
+description = "Project Aura: MNE-based EEG preprocessing and feature extraction"
+requires-python = ">=3.11"
+dependencies = [
+    "mne>=1.7",
+    "scikit-learn>=1.5",
+    "numpy>=1.26",
+    "scipy>=1.13",
+    # MNE's EDF export backend (raw.export(..., fmt="edf")) since MNE 1.6 —
+    # needed by tools/session_to_edf.py to turn a broker/storage.rs session
+    # into a standard, MNE-loadable file.
+    "edfio>=0.4",
+    # esl-epfl/timescoring — the real scoring library behind the SzCORE
+    # benchmark (design doc section 10, Dan et al. 2024). Used by
+    # aura_pipeline/timescore.py and validation/validate_chbmit_szcore.py
+    # to cross-check the hand-rolled sensitivity/FP-rate counting against
+    # the field's actual standard, not to replace it outright.
+    "timescoring>=0.0.7",
+    # esl-epfl/epilepsy2bids — the reference double-banana-montage +
+    # BIDS-events.tsv writer from the same group, used by
+    # tools/export_chbmit_bids.py. NOT the full BIDS/anonymization
+    # pipeline (design doc section 5) — see that script's module doc.
+    "epilepsy2bids>=0.0.7",
+]
+
+[project.optional-dependencies]
+# Phase 4 exploratory only (design doc section 4.4, CLAUDE.md) — the KAN
+# prototype in kan_detector.py. Not needed for the Phase 2 baseline.
+kan = ["torch>=2.2"]
+
+[tool.setuptools]
+packages = ["aura_pipeline"]

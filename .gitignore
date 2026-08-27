@@ -1,0 +1,22 @@
+# Data — never commit real/derived recordings (see data/README.md)
+data/raw/*
+data/derivatives/*
+!data/raw/.gitkeep
+!data/derivatives/.gitkeep
+
+# Rust
+broker/target/
+
+# Python
+pipeline/.venv/
+pipeline/**/__pycache__/
+pipeline/*.egg-info/
+pipeline/.pytest_cache/
+pipeline/.pip-cache/
+
+# Downloaded firmware binaries — not source, don't commit
+hardware/pico_clicker/.firmware/
+
+# OS
+.DS_Store
+Thumbs.db

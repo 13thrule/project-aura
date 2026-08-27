@@ -1,0 +1,26 @@
+{
+  "feature_names": [
+    "line_length",
+    "hjorth_mobility",
+    "hjorth_complexity",
+    "delta",
+    "theta",
+    "alpha",
+    "beta",
+    "gamma"
+  ],
+  "window_seconds": 2.0,
+  "coef": [
+    -0.002135055135418563,
+    -3.012720464685237e-07,
+    -4.480392302927514e-06,
+    4.258021829384552e-09,
+    3.989501654750917e-08,
+    5.928721010448725e-08,
+    -6.253547817859854e-08,
+    2.0675847979042255e-07
+  ],
+  "intercept": -1.289815275500974e-06,
+  "trained_on": "chb01 (all 11 recordings, full-data fit -- not a CV fold)",
+  "caveat": "Real LogisticRegression (scikit-learn), trained on ALL of chb01's CHB-MIT recordings (not a held-out evaluation fold) using the same 8 features as pipeline/aura_pipeline/features.py: line length, Hjorth mobility/complexity, and 5-band FFT power, each averaged across the 8-channel montage. Computed live, in this browser, from this panel's actual buffered signal -- not a synthetic or random value. IMPORTANT CAVEAT: fit on a single subject. pipeline/validation/README.md's chb02 generalization check found this exact model class does NOT reliably transfer to a different person (sensitivity dropped from 7/7 on chb01 to 2/3 on chb02, false-positive rate rose ~5-10x). Read this score as 'how much does this signal's features resemble chb01's own seizures', not a validated general-purpose or clinical detector."
+}

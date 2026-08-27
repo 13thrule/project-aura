@@ -1,0 +1,38 @@
+[chb01] Extracting features...
+{
+  "subject": "chb01",
+  "method": "Same LogisticRegression + leave-one-seizure-out CV as validate_chbmit_multifeature.py, re-scored two ways: hand-rolled window-overlap counting (no timing tolerance) vs esl-epfl/timescoring's EventScoring (SzCORE default tolerances: toleranceStart=30s, toleranceEnd=60s, minDurationBetweenEvents=90s).",
+  "note": "szcore false_positives_per_24h here is a summed event count across all held-out seizure-file folds, not a normalized rate \u2014 each fold is a different-length recording. Treat it as 'total false alarms SzCORE would count across all 7 folds' for comparison against hand_rolled's per-hour rate, not as a directly comparable per-24h figure.",
+  "operating_points": [
+    {
+      "threshold": 0.9,
+      "min_consecutive_windows": 2,
+      "hand_rolled": {
+        "sensitivity": 1.0,
+        "seizures_detected": 7,
+        "false_positives_per_hour": 3.990109983800836
+      },
+      "szcore_timescoring": {
+        "sensitivity": 1.0,
+        "seizures_detected": 7,
+        "seizures_total": 7,
+        "false_positives_per_24h": 9
+      }
+    },
+    {
+      "threshold": 0.99,
+      "min_consecutive_windows": 3,
+      "hand_rolled": {
+        "sensitivity": 1.0,
+        "seizures_detected": 7,
+        "false_positives_per_hour": 0.7673288430386223
+      },
+      "szcore_timescoring": {
+        "sensitivity": 1.0,
+        "seizures_detected": 7,
+        "seizures_total": 7,
+        "false_positives_per_24h": 2
+      }
+    }
+  ]
+}
